@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Result</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Your Quiz Result</h1>
+        <p class="muted">Great job! Review your score below.</p>
+    </div>
+
+    <div class="card">
+        <h2 th:if="${score != null}">
+            You scored <span th:text="${score}"></span> out of <span th:text="${total}"></span>.
+        </h2>
+        <p th:unless="${score != null}">No result to display.</p>
+
+        <div class="actions" style="margin-top:16px;">
+            <a class="btn" th:href="@{/quiz}">Take Quiz Again</a>
+            <form th:action="@{/logout}" method="post" style="margin:0;">
+                <button type="submit" class="btn secondary">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

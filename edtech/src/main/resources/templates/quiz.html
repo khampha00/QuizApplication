@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Take the Quiz</h1>
+        <p class="muted">Choose the best answer for each question.</p>
+    </div>
+
+    <div class="card">
+        <form class="form" th:action="@{/submit}" method="post">
+            <div th:each="q, iter : ${questions}" class="field">
+                <p><strong th:text="${iter.count} + '. ' + ${q.questionText}">1. Sample Question?</strong></p>
+                <div th:each="option : ${q.options}" class="actions" style="gap:8px;">
+                    <input type="radio" th:name="'q_' + ${q.id}" th:value="${option}" required/>
+                    <label th:text="${option}">Option</label>
+                </div>
+                <div class="hr"></div>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn">Submit Answers</button>
+                <form th:action="@{/logout}" method="post" style="margin-left:auto;">
+                    <button type="submit" class="btn secondary">Logout</button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

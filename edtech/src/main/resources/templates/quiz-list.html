@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Quiz List</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Manage Quizzes</h1>
+        <p class="muted">View, edit, or delete questions.</p>
+    </div>
+
+    <div class="actions" style="margin-bottom:16px;">
+        <a class="btn" th:href="@{/add-quiz}">Add New Quiz</a>
+        <form th:action="@{/logout}" method="post" style="margin-left:auto;">
+            <button type="submit" class="btn secondary">Logout</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="q : ${questions}">
+                    <td th:text="${q.id}">1</td>
+                    <td th:text="${q.questionText}">Sample Question?</td>
+                    <td>
+                        <div class="row-actions">
+                            <a class="btn secondary" th:href="@{/edit-quiz/{id}(id=${q.id})}">Edit</a>
+                            <!-- CHANGED: use POST to match controller -->
+                            <form th:action="@{/delete-quiz/{id}(id=${q.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

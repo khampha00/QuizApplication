@@ -1,0 +1,181 @@
+/* styles.css */
+:root {
+    --bg: #f8fafc;           /* Light page background */
+    --panel: #ffffff;        /* Card/panel background */
+    --muted: #64748b;        /* Muted text */
+    --text: #0f172a;         /* Main text */
+    --primary: #3b82f6;      /* Primary */
+    --primary-600: #2563eb;  /* Primary darker */
+    --success: #16a34a;
+    --danger: #dc2626;
+    --border: #e2e8f0;       /* Light border */
+    --focus: #3b82f6;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(1200px 800px at 10% 10%, #ffffff 0%, var(--bg) 40%) no-repeat,
+        radial-gradient(900px 700px at 90% 20%, #eef2ff 0%, transparent 50%) no-repeat,
+        var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+}
+
+a { color: #2563eb; }
+a:hover { text-decoration: underline; }
+
+.container {
+    max-width: 880px;
+    margin: 48px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: linear-gradient(180deg, #ffffff 0%, var(--panel) 100%);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+    padding: 28px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+}
+
+.header p { color: var(--muted); }
+
+.form {
+    display: grid;
+    gap: 16px;
+}
+
+.form .field {
+    display: grid;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: #ffffff;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn {
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.20), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform .05s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn:hover { filter: brightness(1.05); }
+.btn:active { transform: translateY(1px); }
+
+.btn.secondary {
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+    color: #0f172a;
+    box-shadow: 0 8px 18px rgba(148, 163, 184, 0.25), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.btn.danger {
+    background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 10px 20px rgba(239,68,68,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.alert.success { border-color: rgba(34,197,94,0.35); color: #86efac; }
+.alert.error   { border-color: rgba(239,68,68,0.35); color: #fca5a5; }
+
+.hr {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    border: none;
+    margin: 18px 0;
+}
+
+.table-wrap {
+    overflow: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+thead th {
+    text-align: left;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    background: #f1f5f9;
+}
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.row-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+small.muted { color: var(--muted); }

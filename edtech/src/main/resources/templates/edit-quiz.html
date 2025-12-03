@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Quiz</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Edit Quiz Question</h1>
+        <p class="muted">Update the content below and save your changes.</p>
+    </div>
+
+    <div class="card">
+        <!-- CHANGED: use POST -->
+        <form class="form" th:action="@{/edit-quiz}" th:object="${question}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="field">
+                <label for="questionText">Question Text</label>
+                <input type="text" id="questionText" th:field="*{questionText}" required size="50"/>
+            </div>
+
+            <div class="field">
+                <label>Options (enter one per box)</label>
+                <input type="text" th:field="*{options[0]}" placeholder="Option 1" required/>
+                <input type="text" th:field="*{options[1]}" placeholder="Option 2" required/>
+                <input type="text" th:field="*{options[2]}" placeholder="Option 3" required/>
+                <input type="text" th:field="*{options[3]}" placeholder="Option 4" required/>
+            </div>
+
+            <div class="field">
+                <label for="correctAnswer">Correct Answer</label>
+                <input type="text" id="correctAnswer" th:field="*{correctAnswer}" required/>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn">Update Question</button>
+                <a class="btn secondary" th:href="@{/quiz-list}">Back to Quiz List</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
